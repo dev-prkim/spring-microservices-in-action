@@ -1,11 +1,17 @@
 package sample.license.service;
 
+import java.util.Locale;
 import java.util.Random;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 import sample.license.model.License;
 
+@RequiredArgsConstructor
 @Service
 public class LicenseService {
+
+  private final MessageSource messages;
 
   public License getLicense(String licenseId, String organizationId) {
     int id = new Random().nextInt(1000);
@@ -23,26 +29,32 @@ public class LicenseService {
         .build();
   }
 
-  public String createLicense(License license, String organizationId) {
-    if(license == null) {
+  public String createLicense(License license, String organizationId, Locale locale) {
+    if (license == null) {
       return null;
     }
 
     license.setOrganizationId(organizationId);
-    return String.format("This is the post and the object is %s", license);
+    return String.format(
+        messages.getMessage("license.create.message", null, locale),
+        license);
   }
 
-  public String updateLicense(License license, String organizationId) {
-    if(license == null) {
+  public String updateLicense(License license, String organizationId, Locale locale) {
+    if (license == null) {
       return null;
     }
 
     license.setOrganizationId(organizationId);
-    return String.format("This is the put and the object is %s", license);
+    return String.format(
+        messages.getMessage("license.update.message", null, locale),
+        license);
   }
 
   public String deleteLicense(String licenseId, String organizationId) {
-    return String.format("Deleting license with id %s for the organization %s", licenseId, organizationId);
+    return String.format(
+        messages.getMessage("license.delete.message", null, null),
+        licenseId, organizationId);
   }
 
 }

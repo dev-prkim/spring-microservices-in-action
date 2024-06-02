@@ -4,10 +4,11 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.hateoas.RepresentationModel;
 
 @Getter
 @ToString
-public class License {
+public class License extends RepresentationModel<License> {
 
   private int id;
   private String licenseId;

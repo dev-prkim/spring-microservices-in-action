@@ -1,5 +1,8 @@
 package sample.license.controller;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import java.util.Locale;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +26,17 @@ public class LicenseController {
   private final LicenseService licenseService;
 
   @GetMapping(value = "/{licenseId}")
-  public ResponseEntity<License> getLicense(@PathVariable String organizationId, @PathVariable String licenseId) {
+  public ResponseEntity<License> getLicense(@PathVariable String organizationId,
+      @PathVariable String licenseId) {
+
     License license = licenseService.getLicense(licenseId, organizationId);
+
+    license.add(linkTo(methodOn(LicenseController.class)
+            .getLicense(organizationId, licenseId)).withSelfRel(),
+        linkTo(methodOn(LicenseController.class).createLicense(organizationId, license, null)).withRel("createLicense"),
+        linkTo(methodOn(LicenseController.class).updateLicense(organizationId, license, null)).withRel("updateLicense"),
+        linkTo(methodOn(LicenseController.class).deleteLicense(organizationId, licenseId)).withRel("deleteLicense"));
+
     return ResponseEntity.ok(license);
   }
 

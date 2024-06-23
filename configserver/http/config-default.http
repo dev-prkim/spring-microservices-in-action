@@ -1,0 +1,2 @@
+### default configuration 조회
+GET localhost:8071/licensing-service/default

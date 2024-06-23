@@ -10,10 +10,10 @@
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>sample</groupId>
-  <artifactId>licensing-service</artifactId>
+  <artifactId>configserver</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>License Service</name>
-  <description>기업용 자산 관리 애플리케이션을 제공하는 가상회사의 라이선싱 서비스</description>
+  <name>Configuration Server</name>
+  <description>Configuration Server</description>
 
   <properties>
     <java.version>11</java.version>
@@ -23,20 +23,12 @@
 
   <dependencies>
     <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-config-server</artifactId>
+    </dependency>
+    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-config</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
     <dependency>
       <groupId>com.h2database</groupId>
@@ -55,17 +47,9 @@
         </exclusion>
       </exclusions>
     </dependency>
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-hateoas</artifactId>
-    </dependency>
   </dependencies>
 
+  <!-- 스프링 클라우드 BOM -->
   <dependencyManagement>
     <dependencies>
       <dependency>

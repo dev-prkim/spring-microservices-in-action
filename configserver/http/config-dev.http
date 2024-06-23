@@ -1,0 +1,5 @@
+### dev configuration 조회
+### default 와 dev 구성 모두 반환한다. (스프링 프레임워크가 문제를 해결하는데 계층적 메커니즘을 수행하기 때문)
+### default 프로파일에 정의된 프로퍼티를 먼저 찾은 후 특정 환경에 값이 있다면 그 값으로 교체한다.
+### 따라서 default 에서는 정의하고, dev 에서는 정의하지 않았다면 스프링 프레임워크는 default 값을 사용한다.
+GET localhost:8071/licensing-service/dev

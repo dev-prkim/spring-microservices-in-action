@@ -1,0 +1,6 @@
+### 프로퍼티 암호화
+### 대칭 암호화 키 설정을 통해 프로퍼티를 암호화할 수 있다.
+POST localhost:8071/encrypt
+Content-Type: application/text
+
+jdbc:h2:mem:~/licensingServiceApplication

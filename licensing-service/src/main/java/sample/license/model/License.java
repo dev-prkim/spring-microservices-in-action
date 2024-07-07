@@ -1,31 +1,47 @@
 package sample.license.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.Table;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import org.springframework.hateoas.RepresentationModel;
 
+@Builder
 @Getter
-@ToString
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "licenses", indexes = {
+    @Index(name = "idx_license_license_id", columnList = "license_id", unique = true)
+})
 public class License extends RepresentationModel<License> {
 
-  private int id;
-  private String licenseId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long idx;
+  @Column(name = "license_id", nullable = false)
+  @Setter private String licenseId;
   private String description;
-  @Setter private String organizationId;
+  @Column(name = "organization_id", nullable = false)
+  private String organizationId;
+  @Column(name = "product_name", nullable = false)
   private String productName;
+  @Column(name = "license_type", nullable = false)
   private String licenseType;
+  private String comment;
 
-  @Builder
-  private License(int id, String licenseId, String description, String organizationId,
-      String productName, String licenseType) {
-    this.id = id;
-    this.licenseId = licenseId;
-    this.description = description;
-    this.organizationId = organizationId;
-    this.productName = productName;
-    this.licenseType = licenseType;
+  public License withComment(String comment) {
+    this.comment = comment;
+    return this;
   }
 
 }

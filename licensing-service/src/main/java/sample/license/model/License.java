@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,9 +40,26 @@ public class License extends RepresentationModel<License> {
   private String licenseType;
   private String comment;
 
+  @Transient
+  private String organizationName;
+  @Transient
+  private String contactName;
+  @Transient
+  private String contactPhone;
+  @Transient
+  private String contactEmail;
+
+
   public License withComment(String comment) {
     this.comment = comment;
     return this;
+  }
+
+  public void setOrganizationInfo(String organizationName, String contactName, String contactPhone, String contactEmail) {
+    this.organizationName = organizationName;
+    this.contactName = contactName;
+    this.contactPhone = contactPhone;
+    this.contactEmail = contactEmail;
   }
 
 }

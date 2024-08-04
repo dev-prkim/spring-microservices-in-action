@@ -10,10 +10,10 @@
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>sample</groupId>
-  <artifactId>licensing-service</artifactId>
+  <artifactId>organization-service</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>License Service</name>
-  <description>기업용 자산 관리 애플리케이션을 제공하는 가상회사의 라이선싱 서비스</description>
+  <name>Organization Service</name>
+  <description>Ostock Organization Service</description>
 
   <properties>
     <java.version>11</java.version>
@@ -67,10 +67,6 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-hateoas</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-openfeign</artifactId>
     </dependency>
   </dependencies>
 

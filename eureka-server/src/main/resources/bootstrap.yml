@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: eureka-server # spring cloud config 클라이언트가 찾고 있는 서비스를 알 수 있도록 유레카 서비스의 이름을 지정한다.
+  cloud:
+    config:
+      uri: http://localhost:8071  # config 서버의 위치를 지정한다.
+    loadbalancer: # 리본을 비활성화한다.
+      ribbon:
+        enabled: false
